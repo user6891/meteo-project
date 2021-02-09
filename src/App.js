@@ -1,16 +1,24 @@
 import React from 'react';
-import { getData } from './store/meteo-reducer';
+import { getDataFor5Days,getCurrentData } from './store/meteo-reducer';
+import {getLoading} from './store/meteo-selector'
 import style from './App.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import ForecastNow from './components/ForecastNow';
+import Forecast from './components/Forecast';
 
 function App() {
   const dispatch = useDispatch();
-  dispatch(getData('Kyiv'));
+  const loading = useSelector(state => getLoading(state))
+  //dispatch(getDataFor5Days('Kyiv'));
+  React.useEffect(() => {
+    dispatch(getCurrentData('Kyiv'));
+  }, [])
+ 
 
   return (
     <div className={style.App}>
       <div className={style.header}>1</div>
-      <div className={style.content}>2</div>
+      <div className={style.content}>{loading ? <div>loading...</div> :<Forecast />} </div>
       <div className={style.ads}>3</div>
     </div>
   );

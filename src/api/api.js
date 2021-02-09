@@ -1,13 +1,27 @@
 import axios from 'axios';
 
-export const getMeteoDataFor5Days = async (city = 'Kyiv') => {
-  const API_KEY = '9e4b03d1df4d23ab907deb5cf9459ea8';
+const API_KEY = '9e4b03d1df4d23ab907deb5cf9459ea8';
+
+export const getMeteoDataFor5Days = async (city = 'Kyiv', lang = 'en') => {
   try {
     const response = await axios.get(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`,
+      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric&lang=${lang}`,
     );
-    console.log(response);  
-    return response.data.list;
+    console.log('getMeteoDataFor5Days ', response);
+    return { list: response.data.list, city: response.data.city };
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+
+export const getCurrentMeteoData = async (city = 'Kyiv', lang = 'en') => {
+  try {
+    const response = await axios.get(
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric&lang=${lang}`,
+    );
+    console.log('getCurrentMeteoData ', response);
+    return response.data;
   } catch (error) {
     console.log(error);
     return [];

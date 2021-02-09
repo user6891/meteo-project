@@ -1,0 +1,28 @@
+.wrap {
+    display: grid;
+    grid-column: 1fr;
+    row-gap: 2vw;
+    grid-template-rows: 1fr 7fr 2fr;
+    height: 100%;
+}
+.footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 2vw;
+}
+.title{
+    border: 5px solid red;
+}
+.content {
+    border: 5px solid red;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 6fr 1fr 1fr;
+}
+.footer div, .content div {
+    border: 5px solid red;
+}
+.mainContent {
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
+}
