@@ -11,7 +11,7 @@ const initialState = {
   currentWeather: {},
   loading: true,
   city: {},
-  processedData: {},
+  processedData: [],
 };
 
 export const meteoReducer = (state = initialState, action) => {
@@ -45,7 +45,7 @@ export const getAllData = (city, lang) => async (dispatch) => {
   dispatch(setCurrentDataAC(dataCurrent));
   dispatch(setDataAC(data5.list));
   dispatch(setCityDataAC(data5.city));
-  dispatch(setProcessedDataAC({ current: dataCurrent, list: data5.list }));
+  //dispatch(setProcessedDataAC({ current: dataCurrent, list: data5.list }));
   dispatch(setLoadingWeatherAC(false));
 };
 
@@ -60,6 +60,7 @@ export const getDataFor5Days = (city, lang) => async (dispatch) => {
   const data = await getMeteoDataFor5Days(city, lang);
   dispatch(setDataAC(data.list));
   dispatch(setCityDataAC(data.city));
+  dispatch(setProcessedDataAC(data));
   dispatch(setLoadingWeatherAC(false));
 };
 

@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { getTimeOfDate,degreesToDirection } from '../tools';
+import { getTimeOfDate, degreesToDirection } from '../tools';
 
 const getCurrentWeather = (state) => {
   //console.log('meteo-selector getCurrentWeather ', state.meteoReducer.currentWeather);
@@ -8,8 +8,8 @@ const getCurrentWeather = (state) => {
 const getWeather = (state) => {
   return state.meteoReducer.items;
 };
+export const getProcessedData = (state) => state.meteoReducer.processedData;
 export const getLoading = (state) => state.meteoReducer.loading;
-
 
 export const currentWeatherSelector = createSelector(getCurrentWeather, (currentWeather) => {
   //console.log('currentWeatherSelector ', currentWeather);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { getDataFor5Days,getCurrentData } from './store/meteo-reducer';
+import { getDataFor5Days,getCurrentData,getAllData } from './store/meteo-reducer';
 import {getLoading} from './store/meteo-selector'
 import style from './App.module.css';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,9 +9,9 @@ import Forecast from './components/Forecast';
 function App() {
   const dispatch = useDispatch();
   const loading = useSelector(state => getLoading(state))
-  //dispatch(getDataFor5Days('Kyiv'));
+  
   React.useEffect(() => {
-    dispatch(getCurrentData('Kyiv'));
+    dispatch(getDataFor5Days('Kyiv'));dispatch(getCurrentData('Kyiv'));
   }, [])
  
 

@@ -1,0 +1,8 @@
+.wrap {
+  display: grid;
+  grid-template-rows: 5fr 1fr 2fr 1fr 2fr;
+}
+.wrapContent {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+}
