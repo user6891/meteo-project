@@ -1,10 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { getProcessedData } from '../store/meteo-selector';
 import style from './Forecast.module.css';
 
-function Forecast() {
-  const data = useSelector((state) => getProcessedData(state)[0]);
+function Forecast({ data }) {
   if (data) {
     const emptyItems = Array(8 - data.length).fill(0);
     return (

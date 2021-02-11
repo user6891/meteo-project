@@ -1,0 +1,9 @@
+.tab {
+  display: grid;
+  grid-template-columns: 1fr, 1fr;
+  background-color: brown;
+}
+.active {
+  background-color: chartreuse;
+  color: crimson;
+}

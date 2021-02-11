@@ -1,8 +1,3 @@
-/**
- * return current date in string
- * @return format 'day, [number day] month, hours:minute';
- * for example 'Tue, 9 February, 18:49'
- */
 const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const months = [
   'January',
@@ -18,11 +13,28 @@ const months = [
   'November',
   'December',
 ];
+/**
+ * return current date in string
+ * @return format 'day, [number day] month, hours:minute';
+ * for example 'Tue, 9 February, 18:49'
+ */
 export const getCurrentFullDateStr = () => {
   const date = new Date();
   return `${days[date.getDay()]}, ${date.getDate()} ${months[date.getMonth()]}, ${
     date.getHours() < 10 ? '0' + date.getHours() : date.getHours()
   }:${date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()}`;
+};
+/**
+ * return date without hours in string
+ * @return format 'day, [number day] month';
+ * for example 'Tue, 9 February, 18:49'
+ * @param {number} seconds - count of seconds
+ * @param {number} timezone - shift in seconds from UTC
+ */
+export const getDateStr = (seconds) => {
+  const date = new Date(seconds);
+  console.log('getDateStr', date);
+  return `${days[date.getDay()]}, ${date.getDate()} ${months[date.getMonth()]}`;
 };
 
 /**
@@ -135,17 +147,19 @@ const pullWeatherPropObj = (obj, timezone) => {
     precipitationType: obj?.snow ? 'snow' : obj?.rain ? 'rain' : null,
     description: obj.weather[0].description,
     icon: getIconById(obj.weather[0].id),
+    iconId: obj.weather[0].id,
+    dts: obj.dt * 1000 + timezone,
   };
 };
 
 // [
 //    [
-//      { time: x, temp: x, icon: x, windSpeed: x, precipitation: x, description: x },
-//      { time: x, temp: x, icon: x, windSpeed: x, precipitation: x, description: x },
+//      { time: x, temp: x, icon: x, windSpeed: x, precipitation: x, description: x:iconId:xxx},
+//      { time: x, temp: x, icon: x, windSpeed: x, precipitation: x, description: x:iconId:xxx },
 //    ],
 //    [
-//      { time: x, temp: x, icon: x, windSpeed: x, precipitation: x, description: x },
-//      { time: x, temp: x, icon: x, windSpeed: x, precipitation: x, description: x },
+//      { time: x, temp: x, icon: x, windSpeed: x, precipitation: x, description: x, iconId:xxx },
+//      { time: x, temp: x, icon: x, windSpeed: x, precipitation: x, description: x,iconId: xxx },
 //    ]
 //]
 export const dataHandler = (data) => {

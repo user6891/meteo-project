@@ -1,24 +1,24 @@
 .App {
   display: grid;
   grid-template-areas:
-    'header header header header header header'
-    '. content content content ads .';
-    row-gap: 20px;
-    column-gap: 2vw;
-    grid-template-rows: 10vh 90vh;
-    height: 100vh;
-
+    'header  header header header'
+    '. content  ads .';
+  row-gap: 20px;
+  column-gap: 2vw;
+  grid-template-rows: 10vh 90vh;
+  height: 100vh;
 }
-.header, .content, .ads {
-    background-color: aqua;
+.header,
+.content,
+.ads {
+  background-color: aqua;
 }
 .header {
-    grid-area: header;
+  grid-area: header;
 }
 .content {
-    grid-area: content;
+  grid-area: content;
 }
 .ads {
-    grid-area: ads;
+  grid-area: ads;
 }
-
