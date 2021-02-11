@@ -10,7 +10,6 @@ import Header from './components/Header/Header';
 function App() {
   const dispatch = useDispatch();
   const loading = useSelector((state) => getLoading(state));
-  const { city } = useParams();
 
   // React.useEffect(() => {
   //   dispatch(getDataFor5Days('Kyiv'));

@@ -4,7 +4,7 @@ import TabWrap from './TabWrap';
 import { useSelector } from 'react-redux';
 import { getDataForTabs, getProcessedData } from '../store/meteo-selector';
 import style from './ContentWrap.module.css';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 function ContentWrap() {
   const history = useHistory();
