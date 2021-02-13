@@ -8,6 +8,7 @@ const getCurrentWeather = (state) => {
 const getWeather = (state) => {
   return state.meteoReducer.items;
 };
+export const getCityName = (state) => state.meteoReducer.city.name;
 export const getProcessedData = (state) => state.meteoReducer.processedData;
 export const getLoading = (state) => state.meteoReducer.loading;
 
@@ -61,9 +62,12 @@ export const getDataForTabs = createSelector(getCurrentWeather, getProcessedData
       Math,
       element.map((el) => el.iconId),
     );
-    const precipitation = element.map((el) => el.precipitation).reduce((a, c) => a + c);
+    const precipitation = +element
+      .map((el) => el.precipitation)
+      .reduce((a, c) => a + c)
+      .toFixed(2);
     const dateTitle = getDateStr(element[0].dts);
-    console.log('element[0].dt: ', element[0].dts);
+    //console.log('element[0].dt: ', element[0].dts);
     const time = i === 0 ? 'Today' : i === 1 ? 'Tomorrow' : null;
     result.push({
       id: i + 1,
@@ -75,6 +79,6 @@ export const getDataForTabs = createSelector(getCurrentWeather, getProcessedData
       time,
     });
   }
-  console.log('getDataForTabs: ', result);
+  //console.log('getDataForTabs: ', result);
   return result;
 });

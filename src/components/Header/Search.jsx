@@ -9,9 +9,19 @@ function Search({ onSearch }) {
     onSearch(inputText);
     setInputText('');
   };
+  const onInputSubmit = (e) => {
+    if (e.key === 'Enter') {
+      onClickButton();
+    }
+  };
   return (
     <div>
-      <input type="text" onChange={(e) => onChangeText(e)} value={inputText} />
+      <input
+        type="text"
+        onChange={(e) => onChangeText(e)}
+        value={inputText}
+        onKeyPress={(e) => onInputSubmit(e)}
+      />
       <button onClick={() => onClickButton()}>Search</button>
     </div>
   );

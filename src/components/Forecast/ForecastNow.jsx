@@ -4,7 +4,8 @@ import { getCurrentFullDateStr } from '../../tools';
 import { currentWeatherSelector } from '../../store/meteo-selector';
 import style from './ForecastNow.module.css';
 
-function ForecastNow() {
+function ForecastNow({ data }) {
+  const currentDate = getCurrentFullDateStr();
   const {
     temp,
     windSpeed,
@@ -15,8 +16,7 @@ function ForecastNow() {
     feelsLike,
     description,
     windDirection,
-  } = useSelector((state) => currentWeatherSelector(state));
-  const currentDate = getCurrentFullDateStr();
+  } = data;
   return (
     <div className={style.wrap}>
       <div className={style.title}>{currentDate}</div>

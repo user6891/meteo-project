@@ -14,12 +14,13 @@ function Tab({ className, onClick, id, dateTitle, icon, time, ...props }) {
         {props?.temp ? (
           <div>
             <div>{props.temp}</div>
-            <div>{props.feelsLike}</div>
+            <div>feels like {props.feelsLike}</div>
           </div>
         ) : (
           <div>
             <div>{props.tempMin}</div>
             <div>{props.tempMax}</div>
+            <div>{props.precipitation}</div>
           </div>
         )}
       </div>

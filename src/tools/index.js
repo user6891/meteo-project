@@ -33,7 +33,7 @@ export const getCurrentFullDateStr = () => {
  */
 export const getDateStr = (seconds) => {
   const date = new Date(seconds);
-  console.log('getDateStr', date);
+  //console.log('getDateStr', date);
   return `${days[date.getDay()]}, ${date.getDate()} ${months[date.getMonth()]}`;
 };
 
@@ -120,10 +120,10 @@ const getIconNameById = (id) => {
 export const getIconById = (id, scale = '') => {
   const icon = getIconNameById(id);
   if (scale === '2x' || scale === '4x') {
-    console.log('getIconById: ', `http://openweathermap.org/img/wn/${icon}${'@' + scale}.png`);
+    //console.log('getIconById: ', `http://openweathermap.org/img/wn/${icon}${'@' + scale}.png`);
     return `http://openweathermap.org/img/wn/${icon}${'@' + scale}.png`;
   } else {
-    console.log('getIconById: ', `http://openweathermap.org/img/wn/${icon}.png`);
+    //console.log('getIconById: ', `http://openweathermap.org/img/wn/${icon}.png`);
     return `http://openweathermap.org/img/wn/${icon}.png`;
   }
 };

@@ -8,7 +8,12 @@ function TabWrap({ data, onClickTab, selected }) {
   return (
     <div className={style.tabWrap}>
       {data.map((el, id) => (
-        <Tab onClick={onClickTab} {...el} className={classNames({ active: selected === el.id })} />
+        <Tab
+          key={`${id}_${el.id}`}
+          onClick={onClickTab}
+          {...el}
+          className={classNames({ active: selected === el.id })}
+        />
       ))}
     </div>
   );
